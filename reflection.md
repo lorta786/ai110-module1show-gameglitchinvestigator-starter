@@ -7,7 +7,10 @@ Answer each question in 3 to 5 sentences. Be specific and honest about what actu
 - What did the game look like the first time you ran it?
 The game looked like a number guessing game with scores and difficulty setting
 - List at least two concrete bugs you noticed at the start  
-  (for example: "the hints were backwards").
+  The hints are backwards
+  Enter does not work
+  New game does not work
+  Attempts is off by one number
 
 **Bug Reproduction Log**
 
@@ -15,7 +18,7 @@ Document at least 3 bugs you found. Add rows as needed.
 
 | Input | Expected Behavior | Actual Behavior | Console Output / Error |
 |-------|-------------------|-----------------|------------------------|
-|Pressed Enter is supposed   Nothing             N/A
+|Pressed  Enter is supposed   Nothing             N/A
 Enter|    to input the new 
           number
 |Entered  Hint is supposed to It shows to go     N/A
@@ -26,11 +29,11 @@ guess is
 28 when   say go lower        higher
 guess is 
 27|
-|New game  game restarts      Cannot start       N/A
-does not                      new game
- work|
-|Attempts   Attempts state    Only have 5       N/A
-is off by   6
+|Press    game restarts      Cannot start       N/A
+New Game                      new game
+|
+|Attempts Attempts state is 6 Only have 5       N/A
+is off by                     Chances
 one number|
 
 ---
