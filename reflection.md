@@ -5,6 +5,7 @@ Answer each question in 3 to 5 sentences. Be specific and honest about what actu
 ## 1. What was broken when you started?
 
 - What did the game look like the first time you ran it?
+The game looked like a number guessing game with scores and difficulty setting
 - List at least two concrete bugs you noticed at the start  
   (for example: "the hints were backwards").
 
@@ -25,6 +26,12 @@ guess is
 28 when   say go lower        higher
 guess is 
 27|
+|New game  game restarts      Cannot start       N/A
+does not                      new game
+ work|
+|Attempts   Attempts state    Only have 5       N/A
+is off by   6
+one number|
 
 ---
 
