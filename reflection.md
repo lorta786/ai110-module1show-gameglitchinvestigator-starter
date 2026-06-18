@@ -14,8 +14,10 @@ Document at least 3 bugs you found. Add rows as needed.
 
 | Input | Expected Behavior | Actual Behavior | Console Output / Error |
 |-------|-------------------|-----------------|------------------------|
-| | | | |
-| | | | |
+|Pressed Enter is supposed   Nothing             N/A
+Enter|    to input the new 
+          number
+|| 
 | | | | |
 
 ---
