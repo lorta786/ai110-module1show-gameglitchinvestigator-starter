@@ -17,8 +17,14 @@ Document at least 3 bugs you found. Add rows as needed.
 |Pressed Enter is supposed   Nothing             N/A
 Enter|    to input the new 
           number
-|| 
-| | | | |
+|Entered  Hint is supposed to It shows to go     N/A
+20 when   say go higher       lower
+guess is 
+27| 
+|Entered  Hint is supposed to It shows to go     N/A
+28 when   say go lower        higher
+guess is 
+27|
 
 ---
 
