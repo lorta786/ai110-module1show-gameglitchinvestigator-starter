@@ -70,8 +70,10 @@ with st.form(key="guess_form", clear_on_submit=True):
         new_game = st.form_submit_button("New Game 🔁")
 
 if new_game:
-    st.session_state.attempts = 0
-    st.session_state.secret = random.randint(1, 100)
+    st.session_state.attempts = 1
+    st.session_state.secret = random.randint(low, high)
+    st.session_state.status = "playing"
+    st.session_state.history = []
     st.success("New game started.")
     st.rerun()
 
