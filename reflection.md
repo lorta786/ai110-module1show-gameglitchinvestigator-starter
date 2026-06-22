@@ -54,9 +54,12 @@ It was suggesting that the comments for the hints being wrong was becasue of the
 ## 3. Debugging and testing your fixes
 
 - How did you decide whether a bug was really fixed?
+I decided if a bug was really fixed if I was able to not repeat it multiple times doing multiple different tests. I also looked at the refactored code and made some edits if needed to ensure it was up to my standard.
 - Describe at least one test you ran (manual or using pytest)  
   and what it showed you about your code.
+  One manual test I did was when a user guessed a number, I would intentionally go lower for the first guess, and higher for the second guess to ensure the hint messages were correct. From there I would guess the right number and then hit new game to ensure everything was reset.
 - Did AI help you design or understand any tests? How?
+AI helped me understand the design of the code. I made sure that with each interaction, I had it explain the logic of the current code being fixed before edits were made, from there I would see if I could make the edit myself before letting Claude Code go through with the edits.
 
 ---
 

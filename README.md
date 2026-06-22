@@ -26,18 +26,43 @@ It wrote the code, ran away, and now the game is unplayable.
 ## 📝 Document Your Experience
 
 - [ ] Describe the game's purpose.
+The games purpose at a base level is a number guesing game. However, this projects purpose is how someone working on a project can use AI as a tool to fix bugs in a project and seeing if the code it generates is correct.
 - [ ] Detail which bugs you found.
+Difficulty was backwards (Normal was Hard and Hard was normal)
+Score was off
+Hints were off
+New Game Button did nothing 
+Changing difficulties did not reset the game
+Hint range was constatntly 1-100
+Entering an empty guess counted against the user
+
 - [ ] Explain what fixes you applied.
+Swapped Normal/Hard difficulty ranges — Normal was 1–100 and Hard was 1–50 (backwards). Fixed to Easy: 1–20, Normal: 1–50, Hard: 1–100.
+Fixed update_score off-by-one — The win formula had an extra +1 (100 - 10 * (attempt_number + 1)), so a first-attempt win scored 80 instead of 90. Removed the +1.
+Fixed Too High giving bonus points — On even attempt numbers, Too High incorrectly awarded +5. Now both Too High and Too Low always deduct 5 points consistently.
+Moved game logic from app.py to logic_utils.py — get_range_for_difficulty and parse_guess were relocated here so logic is testable and separated from the UI.
+app.py
+
+Fixed "New Game" button doing nothing — The button was not resetting status, score, or history, so the game stayed in a broken state. Now fully resets all session state.
+Fixed difficulty change not resetting game — Switching difficulty mid-game didn't reset the secret, attempts, or score. Added a check for st.session_state.difficulty != difficulty to trigger a full reset.
+Fixed hint range showing 1–100 always — The st.info prompt hardcoded 1 and 100 instead of using {low} and {high} from the selected difficulty.
+Fixed empty/invalid input costing an attempt — The attempt counter incremented even on rejected input. Moved the increment inside the valid-guess branch.
+Fixed lexicographic secret comparison bug — On every other turn, secret was cast to str, causing comparisons like 10 > "9" to fail lexicographically. Now always passes secret as int to check_guess.
+Rotated attempt limits — Easy had 6, Normal had 8, Hard had 5. Corrected to Easy: 5, Normal: 6, Hard: 8 so harder difficulties actually have fewer attempts.
+Fixed starting attempt count — attempts initialized to 1 instead of 0, causing the first guess to display as attempt 2.
 
 ## 📸 Demo Walkthrough
 
 Describe your fixed game in numbered steps so a reader can follow along without watching a video:
 
-1. User enters a guess of 40
-2. Game returns "Too Low"
-3. User enters a guess of 70 → "Too High"
+1. User enters a guess
+2. Game returns "Too Low" or "Too high"
+3. User enters a new guess
 4. Score updates correctly after each guess
-5. Game ends after the correct guess
+5. Game ends after the correct guess or if user loses
+6. Enter new game
+7. Choose a new difficulty before making a new guess
+8. Repeat step 1
 
 **Screenshot** *(optional)*: <!-- Insert a screenshot of your fixed, winning game here -->
 
