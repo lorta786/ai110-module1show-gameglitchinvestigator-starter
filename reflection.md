@@ -41,8 +41,13 @@ one number|
 ## 2. How did you use AI as a teammate?
 
 - Which AI tools did you use on this project (for example: ChatGPT, Gemini, Copilot)?
+I used Claude Code to assist me during this assignment
+
 - Give one example of an AI suggestion that was correct (including what the AI suggested and how you verified the result).
+One suggestion that AI showed that was correct was when I was unsure where the difficulty logic was, it pointed out where it was. I had a feeling that while I was debugging the game, the difficulty was off but when it was pointed out to me by Claude, it confirmed my suspicions. 
+
 - Give one example of an AI suggestion that was incorrect or misleading (including what the AI suggested and how you verified the result).
+It was suggesting that the comments for the hints being wrong was becasue of the emojis. After I looked into the strings, it was not just the emojis, but the placement of where the strings were supposed to be. I swapped the messages to their correct spots and added my own logic to ensure that it was correct.
 
 ---
 

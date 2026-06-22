@@ -33,21 +33,48 @@ It wrote the code, ran away, and now the game is unplayable.
 
 Describe your fixed game in numbered steps so a reader can follow along without watching a video:
 
-1. <!-- Describe this step -->
-2. <!-- Describe this step -->
-3. <!-- Describe this step -->
-4. <!-- Describe this step -->
-5. <!-- Add more steps as needed -->
+1. User enters a guess of 40
+2. Game returns "Too Low"
+3. User enters a guess of 70 → "Too High"
+4. Score updates correctly after each guess
+5. Game ends after the correct guess
 
 **Screenshot** *(optional)*: <!-- Insert a screenshot of your fixed, winning game here -->
 
 ## 🧪 Test Results
 
 ```
-# Paste your pytest output here, e.g.:
-# pytest tests/
-# ========================= X passed in 0.XXs =========================
-```
+======================================================================================================================== test session starts ========================================================================================================================
+platform darwin -- Python 3.9.6, pytest-8.4.2, pluggy-1.6.0 -- /Applications/Xcode.app/Contents/Developer/usr/bin/python3
+cachedir: .pytest_cache
+rootdir: /Users/lorta/Documents/GitHub/ai110-module1show-gameglitchinvestigator-starter
+collected 25 items                                                                                                                                                                                                                                                  
+
+test/test_game_logic.py::TestGetRangeForDifficulty::test_easy_range PASSED                                                                                                                                                                                    [  4%]
+test/test_game_logic.py::TestGetRangeForDifficulty::test_normal_range PASSED                                                                                                                                                                                  [  8%]
+test/test_game_logic.py::TestGetRangeForDifficulty::test_hard_range PASSED                                                                                                                                                                                    [ 12%]
+test/test_game_logic.py::TestGetRangeForDifficulty::test_unknown_difficulty_defaults PASSED                                                                                                                                                                   [ 16%]
+test/test_game_logic.py::TestGetRangeForDifficulty::test_difficulty_scales_up PASSED                                                                                                                                                                          [ 20%]
+test/test_game_logic.py::TestCheckGuess::test_correct_guess PASSED                                                                                                                                                                                            [ 24%]
+test/test_game_logic.py::TestCheckGuess::test_too_low PASSED                                                                                                                                                                                                  [ 28%]
+test/test_game_logic.py::TestCheckGuess::test_too_high PASSED                                                                                                                                                                                                 [ 32%]
+test/test_game_logic.py::TestCheckGuess::test_secret_as_int_not_str PASSED                                                                                                                                                                                    [ 36%]
+test/test_game_logic.py::TestCheckGuess::test_boundary_one_above PASSED                                                                                                                                                                                       [ 40%]
+test/test_game_logic.py::TestCheckGuess::test_boundary_one_below PASSED                                                                                                                                                                                       [ 44%]
+test/test_game_logic.py::TestUpdateScore::test_win_first_attempt PASSED                                                                                                                                                                                       [ 48%]
+test/test_game_logic.py::TestUpdateScore::test_win_second_attempt PASSED                                                                                                                                                                                      [ 52%]
+test/test_game_logic.py::TestUpdateScore::test_win_minimum_score_floor PASSED                                                                                                                                                                                 [ 56%]
+test/test_game_logic.py::TestUpdateScore::test_too_high_deducts_five PASSED                                                                                                                                                                                   [ 60%]
+test/test_game_logic.py::TestUpdateScore::test_too_high_odd_attempt_deducts_five PASSED                                                                                                                                                                       [ 64%]
+test/test_game_logic.py::TestUpdateScore::test_too_low_deducts_five PASSED                                                                                                                                                                                    [ 68%]
+test/test_game_logic.py::TestUpdateScore::test_unknown_outcome_no_change PASSED                                                                                                                                                                               [ 72%]
+test/test_game_logic.py::TestUpdateScore::test_score_accumulates PASSED                                                                                                                                                                                       [ 76%]
+test/test_game_logic.py::TestParseGuess::test_valid_integer PASSED                                                                                                                                                                                            [ 80%]
+test/test_game_logic.py::TestParseGuess::test_empty_string PASSED                                                                                                                                                                                             [ 84%]
+test/test_game_logic.py::TestParseGuess::test_none_input PASSED                                                                                                                                                                                               [ 88%]
+test/test_game_logic.py::TestParseGuess::test_non_numeric PASSED                                                                                                                                                                                              [ 92%]
+test/test_game_logic.py::TestParseGuess::test_float_string_truncates PASSED                                                                                                                                                                                   [ 96%]
+test/test_game_logic.py::TestParseGuess::test_invalid_guess_does_not_cost_attempt PASSED   
 
 ## 🚀 Stretch Features
 
