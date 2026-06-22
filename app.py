@@ -27,6 +27,7 @@ low, high = get_range_for_difficulty(difficulty)
 st.sidebar.caption(f"Range: {low} to {high}")
 st.sidebar.caption(f"Attempts allowed: {attempt_limit}")
 
+# FIX: Reset game state when difficulty changes so the secret uses the correct range using agent mode
 if "secret" not in st.session_state or st.session_state.get("difficulty") != difficulty:
     st.session_state.secret = random.randint(low, high)
     st.session_state.difficulty = difficulty
@@ -88,6 +89,7 @@ if st.session_state.status != "playing":
         st.error("Game over. Start a new game to try again.")
     st.stop()
 
+# FIX: moved attempts increment inside the valid-guess branch so empty/invalid input no longer costs an attempt done using agent mode
 if submit:
     ok, guess_int, err = parse_guess(raw_guess)
 
@@ -97,6 +99,7 @@ if submit:
         st.session_state.attempts += 1
         st.session_state.history.append(guess_int)
 
+        # FIX: Always pass secret as int so check_guess uses numeric comparison, not lexicographic using agent mode
         outcome, message = check_guess(guess_int, st.session_state.secret)
 
         if show_hint:
