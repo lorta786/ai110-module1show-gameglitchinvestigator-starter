@@ -15,10 +15,11 @@ difficulty = st.sidebar.selectbox(
     index=1,
 )
 
+# FIX: Rotated attempt limits so scoring scales correctly with difficulty using agent mode
 attempt_limit_map = {
-    "Easy": 6,
-    "Normal": 8,
-    "Hard": 5,
+    "Easy": 5,
+    "Normal": 6,
+    "Hard": 8,
 }
 attempt_limit = attempt_limit_map[difficulty]
 
@@ -31,12 +32,14 @@ st.sidebar.caption(f"Attempts allowed: {attempt_limit}")
 if "secret" not in st.session_state or st.session_state.get("difficulty") != difficulty:
     st.session_state.secret = random.randint(low, high)
     st.session_state.difficulty = difficulty
-    st.session_state.attempts = 1
+    st.session_state.attempts = 0
+    # FIX: Reset score to 0 on difficulty change so it doesn't carry over between sessions using agent mode
+    st.session_state.score = 0
     st.session_state.status = "playing"
     st.session_state.history = []
 
 if "attempts" not in st.session_state:
-    st.session_state.attempts = 1
+    st.session_state.attempts = 0
 
 if "score" not in st.session_state:
     st.session_state.score = 0
@@ -74,8 +77,10 @@ with st.form(key="guess_form", clear_on_submit=True):
     with col2:
         new_game = st.form_submit_button("New Game 🔁")
 
+# FIX: Reset score to 0 on new game so it doesn't carry over between games using agent mode
 if new_game:
-    st.session_state.attempts = 1
+    st.session_state.attempts = 0
+    st.session_state.score = 0
     st.session_state.secret = random.randint(low, high)
     st.session_state.status = "playing"
     st.session_state.history = []

@@ -1,11 +1,14 @@
+# Code was moved from app.py to logic_utils.py
+
+# FIX: Swapped Hard and Normal ranges so difficulty scales correctly — Easy (1-20), Normal (1-50), Hard (1-100)
 def get_range_for_difficulty(difficulty: str):
     """Return (low, high) inclusive range for a given difficulty."""
     if difficulty == "Easy":
         return 1, 20
     if difficulty == "Normal":
-        return 1, 100
-    if difficulty == "Hard":
         return 1, 50
+    if difficulty == "Hard":
+        return 1, 100
     return 1, 100
 
 
@@ -38,6 +41,7 @@ def check_guess(guess, secret):
 
     outcome examples: "Win", "Too High", "Too Low"
     """
+    # FIX: done by myself
     if guess == secret:
         return "Win", "🎉 Correct!"
 
@@ -60,17 +64,13 @@ def check_guess(guess, secret):
 def update_score(current_score: int, outcome: str, attempt_number: int):
     """Update score based on outcome and attempt number."""
     if outcome == "Win":
-        points = 100 - 10 * (attempt_number + 1)
+        # FIX: Removed extra +1 so attempt_number is 1-indexed and first-attempt win correctly scores 90 points using agent mode
+        points = 100 - 10 * attempt_number
         if points < 10:
             points = 10
         return current_score + points
 
-    if outcome == "Too High":
-        if attempt_number % 2 == 0:
-            return current_score + 5
-        return current_score - 5
-
-    if outcome == "Too Low":
+    if outcome in ("Too High", "Too Low"):
         return current_score - 5
 
     return current_score
